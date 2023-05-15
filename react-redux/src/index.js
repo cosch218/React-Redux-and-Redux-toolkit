@@ -11,14 +11,20 @@ import { Provider } from "react-redux";
 
 // store를 만들기 위한 createStore 추가
 // createStore에 줄이 그어진 이유 : createStore 보다는 toolkit 사용을 권장하기 때문
-import { createStore } from "redux";
+// applyMiddleware : 미들웨어 적용하기 위해 들고 옴
+import { createStore, applyMiddleware } from "redux";
 
 // rootReducer를 가져오기
 import rootReduser from './modules';
+import myLogger from './middleware/myLogger';
+import thunk from 'redux-thunk';
 
 // createStore를 통해 store 생성
 // >> Provider의 store 속성값으로 사용하게 됨
-const store = createStore(rootReduser);
+const store = createStore(
+  rootReduser, 
+  applyMiddleware(myLogger, thunk)
+  );
 
 
 
