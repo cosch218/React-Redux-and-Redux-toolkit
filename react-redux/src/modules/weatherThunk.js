@@ -19,11 +19,11 @@ export const getWeather = () => async (next) => {
     // getWeather 액션함수 실행 : loading true
     next({type:"startloading"})
 
-    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Busan&appid=4dad9bbae1e72055329bdef5378c640f');
+    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Busan&appid=e1f754ec9f3f731d5c1e2c80765353a0&lang=kr');
     const data = await response.json();
     console.log(data.weather[0].description)
     // next를 이용하여 리듀서에 전달할 액션객체 작성
-    // next({type:"getWeather", payload:data.weather[0].description})
+    next({type:"getWeather", payload:data.weather[0].description})
 
     // getWeather 액션함수 종료: loading false
     next({type:"endloading"})
