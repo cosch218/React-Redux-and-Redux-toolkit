@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { getWeatherAPI } from '../slices/weatherSlice';
 
+// 비동기로 값을 호출하는 내용을 dispatch로 불러와서 사용
+// 비동기 내용은 '../slices/weatherSlice' 이 경로에서 확인 가능
 export default function WeatherComp() {
   const weather = useSelector((state)=>(state.weather))
   const dispatch = useDispatch();
 
+  // 시작하자마자 dispatch를 이용하여 값을 가져옴
   useEffect(()=>{
     dispatch(getWeatherAPI())
   },[])

@@ -24,6 +24,7 @@ export const weatherSlice = createSlice({
 
 
 // thunk를 사용한 액션 생성 함수 작성
+// 비동기 함수이기 때문에 async 작성 => async를 작성하면 await을 사용할 수 있다
 export const getWeatherAPI = () => async (dispatch) => {
   dispatch(startLoading())
 
